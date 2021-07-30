@@ -13,3 +13,4 @@
 
 **What the group will explore**
 - Use Pandas to clean the data, then use matplot lib to visualize some comparisons
+- User AmazonS3 bucket to store data
