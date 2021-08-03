@@ -6,9 +6,8 @@ class AppConfig(object):
 		"""
 			Constructs a new AppConfig instance and populates settings based on appsettings.ini first, then appsettings.development.ini
 		"""
-
-		read_config(self, "appsettings.ini")
 		read_config(self, "appsettings.development.ini")
+
 
 def read_config(self, file):
 	parser = configparser.SafeConfigParser()
