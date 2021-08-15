@@ -24,7 +24,6 @@ class Temperature:
                       aws_secret_access_key=appConfig.secretAccessKey,
                       region_name=appConfig.region)
         s3.download_file(appConfig.bucket, 'data_files/tasmax.csv', 'test_two.csv')
-        print(file)
         return pd.read_csv('data_files/tasmax.csv', usecols=range(5))
 
     def _clean_data(self):
