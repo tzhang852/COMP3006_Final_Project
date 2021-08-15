@@ -15,9 +15,15 @@ class Temperature:
         :returns dataframe built from weather dataset:
         """
         appConfig = AppConfig.AppConfig()
-        session = boto3.Session(aws_access_key_id=appConfig.accessKeyId,
-                                aws_secret_access_key=appConfig.secretAccessKey)
-        file = session.resource('s3').Bucket(appConfig.bucket).download_file('tasmax.csv', "data_files/")
+        # session = boto3.Session(aws_access_key_id=appConfig.accessKeyId,
+        #                         aws_secret_access_key=appConfig.secretAccessKey,
+        #                         region_name=appConfig.region)
+        # file = session.resource('s3').Bucket(appConfig.bucket).download_file('tasmax.csv', "data_files/")
+
+        s3 = boto3.client('s3', aws_access_key_id=appConfig.accessKeyId,
+                      aws_secret_access_key=appConfig.secretAccessKey,
+                      region_name=appConfig.region)
+        s3.download_file(appConfig.bucket, 'data_files/tasmax.csv', 'test_two.csv')
         print(file)
         return pd.read_csv('data_files/tasmax.csv', usecols=range(5))
 
