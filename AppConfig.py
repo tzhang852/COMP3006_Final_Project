@@ -8,7 +8,8 @@ class AppConfig:
             then appsettings.development.ini
         """
         # self.read_config("appsettings.development.ini")
-        self.bucket, self.accessKeyId, self.secretAccessKey, self.region = self.read_config("appsettings.ini")
+        # self.bucket, self.accessKeyId, self.secretAccessKey, self.region = self.read_config("appsettings.development.ini")
+        self.bucket, self.accessKeyId, self.secretAccessKey, self.region = self.read_config("appsettings.devolpment.ini")
 
     def read_config(self, file):
         parser = configparser.ConfigParser()
