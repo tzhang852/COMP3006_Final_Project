@@ -4,6 +4,7 @@ import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
 import boto3
+import argparse
 
 class Happiness:
     def __init__(self):
@@ -79,7 +80,15 @@ class Happiness:
         graph.set_title(label = 'Happiness by Country', fontsize = 20)
         plt.xticks(rotation = 90)
         plt.show()
+    
+def main():
+    parser = argparse.ArgumentParser(description="Function for AutoMPG sorting")
+    parser.add_argument('-p', '--plot', dest='plot', type = str, help = "Show Happiness by Country")
+    args = parser.parse_args()
 
-happiness = Happiness()
-print(happiness.df)
-happiness.happiness_map()
+    happiness = Happiness()
+    print(args)
+    if args.plot:
+        happiness.happiness_map()
+
+
