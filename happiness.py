@@ -84,11 +84,13 @@ class Happiness:
 def main():
     parser = argparse.ArgumentParser(description="Function for AutoMPG sorting")
     parser.add_argument('-p', '--plot', dest='plot', type = str, help = "Show Happiness by Country")
+    parser.add_argument('-o', '--ofile', dest='file', help = "file to write")
     args = parser.parse_args()
 
     happiness = Happiness()
     print(args)
-    if args.plot:
-        happiness.happiness_map()
+    if args.ofile:
+        if args.plot:
+            happiness.happiness_map()
 
 
