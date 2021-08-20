@@ -1,7 +1,9 @@
 import pandas as pd
 import AppConfig
 import plotly.express as px
+import numpy as np
 import seaborn as sns
+import matplotlib
 import matplotlib.pyplot as plt
 import boto3
 import argparse
@@ -23,8 +25,8 @@ class Happiness:
         s3 = boto3.client('s3', aws_access_key_id=appConfig.accessKeyId,                       
                             aws_secret_access_key=appConfig.secretAccessKey,                       
                             region_name=appConfig.region)         
-        s3.download_file(appConfig.bucket, 'data_files/WHR2021.csv', 'test_two.csv')
-        return pd.read_csv('data_files/WHR2021.csv')
+        s3.download_file(appConfig.bucket, 'data_files/WHR2021.csv', 'happiness.csv')
+        return pd.read_csv('happiness.csv')
 
     def _clean_data(self):
         """
@@ -63,7 +65,7 @@ class Happiness:
                             hover_name="country",
                             range_color=[self.df.happiness.min(), self.df.happiness.max()],
                             color_continuous_scale="blues",
-                            title='Happiness by countries from 2008 to 2020',
+                            title='Happiness by Country',
                             animation_frame="year")
         fig.update(layout_coloraxis_showscale=True)
         fig.show()
@@ -83,14 +85,13 @@ class Happiness:
     
 def main():
     parser = argparse.ArgumentParser(description="Function for AutoMPG sorting")
-    parser.add_argument('-p', '--plot', dest='plot', type = str, help = "Show Happiness by Country")
-    parser.add_argument('-o', '--ofile', dest='file', help = "file to write")
+    parser.add_argument('-p', '--plot', help = "Plot Happiness by Country", required=True)
     args = parser.parse_args()
 
     happiness = Happiness()
     print(args)
-    if args.ofile:
-        if args.plot:
-            happiness.happiness_map()
+    if args.plot:
+        happiness.happiness_map()
 
-
+if __name__ == "__main__":
+    main()

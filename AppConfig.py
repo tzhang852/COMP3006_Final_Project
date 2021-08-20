@@ -21,4 +21,4 @@ class AppConfig:
         """
         # self.read_config("appsettings.development.ini")
         # self.bucket, self.accessKeyId, self.secretAccessKey, self.region = self.read_config("appsettings.development.ini")
-        self.bucket, self.accessKeyId, self.secretAccessKey, self.region = read_config("appsettings.devolpment.ini")
+        self.bucket, self.accessKeyId, self.secretAccessKey, self.region = read_config("appsettings.ini")
