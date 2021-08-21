@@ -25,8 +25,8 @@ class Happiness:
         s3 = boto3.client('s3', aws_access_key_id=appConfig.accessKeyId,                       
                             aws_secret_access_key=appConfig.secretAccessKey,                       
                             region_name=appConfig.region)         
-        s3.download_file(appConfig.bucket, 'data_files/WHR2021.csv', 'happiness.csv')
-        return pd.read_csv('happiness.csv')
+        s3.download_file(appConfig.bucket, 'data_files/WHR2021.csv', 'data_files/happiness.csv')
+        return pd.read_csv('data_files/happiness.csv')
 
     def _clean_data(self):
         """

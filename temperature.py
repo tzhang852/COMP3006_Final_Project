@@ -58,8 +58,3 @@ class Temperature:
                             animation_frame="year")
         fig.update(layout_coloraxis_showscale=True)
         fig.show()
-
-
-temperature = Temperature()
-print(temperature.df)
-temperature.temp_map()

@@ -4,7 +4,6 @@ import configparser
 def read_config(file):
     parser = configparser.ConfigParser()
     parser.read(file)
-    print(list(parser.items()))
 
     bucket = parser.get('AWS', 'AWS_S3_BUCKET')
     accessKeyId = parser.get('AWS', 'AWS_ACCESS_KEY_ID')
