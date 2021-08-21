@@ -72,7 +72,7 @@ class Happiness:
 
     def happiness_bar(self):
         """
-        Displays a bar graph of happiness by countries in alphabetical order
+        Displays a bar graph of happiness by countries in 2020
         """
         current_year = self.df[self.df['year']==2020][:166]
         plt.rcParams['figure.figsize']=(30, 7)
@@ -82,11 +82,20 @@ class Happiness:
         graph.set_title(label = 'Happiness by Country', fontsize = 20)
         plt.xticks(rotation = 90)
         plt.show()
-    
+
+    # def happiness_line(self):
+    #     """
+    #     Displays a line graph for each country with relative parameters that influence happiness
+    #     """
+    #     current_year = self.df[self.df['year'] == 2020][:166]
+    #     #df.loc[df['happiness'] < 100, 'country'] = 'Other countries' # Represent only large countries
+    #     fig = px.pie(current_year, values='happiness', names='country', title='Happiness by Country in 2020')
+    #     fig.show()
+
 def main():
-    parser = argparse.ArgumentParser(description="Function for AutoMPG sorting")
+    parser = argparse.ArgumentParser(description="Happiness arguments")
     parser.add_argument('-p', '--plot', choices = ['heatmap', 'bar'], help = "Display happiness by country"+
-    " using a heatmap, bargraph, or piechart")
+    " using a heatmap or bar graph")
     #parser.add_argument('-')
     args = parser.parse_args()
 
@@ -96,6 +105,8 @@ def main():
         happiness.happiness_map()
     elif args.plot == 'bar':
         happiness.happiness_bar()
+    elif args.plot == 'pie':
+        happiness.happiness_pie()
 
 if __name__ == "__main__":
     main()
