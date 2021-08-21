@@ -24,6 +24,8 @@ class Analysis:
         """
 
         temp_happy_df = (self.happy_df.merge(self.temp_df, on=['country', 'year'], how='inner'))
+        #normalize
+        temp_happy_df['happiness'] = temp_happy_df['happiness']/max(temp_happy_df['happiness'])
         print(temp_happy_df['country'])
         return temp_happy_df
 
@@ -33,9 +35,9 @@ class Analysis:
         #combine dataframe
         #temp_happ_df = pd.concat([self.temp_df, self.happ_df], axis = 1)
         #max_temp =
-        fig = px.scatter_geo(self.temp_happy_df, locations="country", color="max_temp",
-                     size="happiness", animation_frame = 'year',
-                     projection="natural earth")
+        fig = px.scatter_geo(self.temp_happy_df, locations="country", locationmode='country names',
+                    color="max_temp", hover_name = 'country', size="happiness", size_max=30,
+                    animation_frame = 'year', projection="natural earth")
         fig.show()
     
 def main():
