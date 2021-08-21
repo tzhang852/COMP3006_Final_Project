@@ -85,13 +85,17 @@ class Happiness:
     
 def main():
     parser = argparse.ArgumentParser(description="Function for AutoMPG sorting")
-    parser.add_argument('-p', '--plot', help = "Plot Happiness by Country", required=True)
+    parser.add_argument('-p', '--plot', choices = ['heatmap', 'bar'], help = "Display happiness by country"+
+    " using a heatmap, bargraph, or piechart")
+    #parser.add_argument('-')
     args = parser.parse_args()
 
     happiness = Happiness()
     print(args)
-    if args.plot:
+    if args.plot == 'heatmap':
         happiness.happiness_map()
+    elif args.plot == 'bar':
+        happiness.happiness_bar()
 
 if __name__ == "__main__":
     main()
