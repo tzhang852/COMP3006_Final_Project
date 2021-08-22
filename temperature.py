@@ -2,6 +2,7 @@ import pandas as pd
 import AppConfig
 import plotly.express as px
 import boto3
+import os
 
 
 class Temperature:
@@ -17,8 +18,8 @@ class Temperature:
         appConfig = AppConfig.AppConfig()
         file_path = 'data_files/tasmax.csv'
         s3 = boto3.client('s3', aws_access_key_id=appConfig.accessKeyId,
-                      aws_secret_access_key=appConfig.secretAccessKey,
-                      region_name=appConfig.region)
+                          aws_secret_access_key=appConfig.secretAccessKey,
+                          region_name=appConfig.region)
         s3.download_file(appConfig.bucket, file_path, file_path)
         return pd.read_csv(file_path, usecols=range(5))
 
@@ -31,7 +32,13 @@ class Temperature:
 
         :returns cleaned dataset:
         """
-        df_temp = self._load_data()
+        file_path = "data_files/tasmax.csv"
+        exists = os.path.exists(file_path)
+        if not exists:
+            df_temp = self._load_data(self)
+        else:
+            df_temp = pd.read_csv(file_path, usecols=range(5))
+
         df_temp = df_temp.drop(columns=[' ISO3'])
         df_temp = df_temp.rename(columns={' Year': 'year',
                                           ' Statistics': 'month',
