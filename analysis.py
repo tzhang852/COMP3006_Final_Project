@@ -26,21 +26,20 @@ class Analysis:
         temp_happy_df = (self.happy_df.merge(self.temp_df, on=['country', 'year'], how='inner'))
         # normalize
         temp_happy_df['happiness'] = temp_happy_df['happiness'] / max(temp_happy_df['happiness'])
-        temp_happy_df.to_csv("testing3.csv")
+        #temp_happy_df.to_csv("testing3.csv")
         return temp_happy_df
 
     def mean_max_temp(self):
         """
         Plots mean max temp against average happiness for each country per year
         using bubble heat map
-        heat color goes off of temp
+        heat color goes off of temperature
         bubble size goes off happiness
         """
         fig = px.scatter_geo(self.temp_happy_df, locations="country", locationmode='country names',
                              color="max_temp", hover_name='country', size="happiness", size_max=30,
                              animation_frame='year', projection="natural earth")
         fig.show()
-
 
 def main():
     parser = argparse.ArgumentParser(description="Analysis")

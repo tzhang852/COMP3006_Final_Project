@@ -36,7 +36,7 @@ class Happiness:
         """
         exists = os.path.exists("data_files/WHR2021.csv")
         if not exists:
-            df_happiness = self._load_data(self)
+            df_happiness = self._load_data()
         else:
             df_happiness = pd.read_csv('data_files/happiness.csv', usecols=range(5))
 
@@ -121,23 +121,22 @@ class Happiness:
         return_df = self.df.loc[self.df['year'] == year]
         return return_df.sort_values(by=['max_temp']).head(n)
 
-
-
 def main():
-    parser = argparse.ArgumentParser(description="Happiness arguments")
-    parser.add_argument('-p', '--plot', choices=['heatmap', 'bar'], help="Display happiness by country" +
-                                                                         " using a heatmap or bar graph")
-    # parser.add_argument('-')
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser(description="Happiness arguments")
+    # parser.add_argument('-p', '--plot', choices=['heatmap', 'bar'], help="Display happiness by country" +
+    #                                                                      " using a heatmap or bar graph")
+    # # parser.add_argument('-')
+    # args = parser.parse_args()
 
-    happiness = Happiness()
-    print(args)
-    if args.plot == 'heatmap':
-        happiness.happiness_map()
-    elif args.plot == 'bar':
-        happiness.happiness_bar()
-    elif args.plot == 'pie':
-        happiness.happiness_pie()
+    # happiness = Happiness()
+    # print(args)
+    # if args.plot == 'heatmap':
+    #     happiness.happiness_map()
+    # elif args.plot == 'bar':
+    #     happiness.happiness_bar()
+    some_variable = Happiness().df
+    #print(some_variable)
+    some_variable.to_csv("some_variable.csv", index = False)
 
 
 if __name__ == "__main__":
