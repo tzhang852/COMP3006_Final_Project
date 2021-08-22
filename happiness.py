@@ -93,6 +93,35 @@ class Happiness:
     #     fig = px.pie(current_year, values='happiness', names='country', title='Happiness by Country in 2020')
     #     fig.show()
 
+    def top_n_happiest_countries(self, n, year=None):
+        """
+        Returns the top n happiest (country with highest happiness index) countries for all time (over the dataset)
+        If years parameter is provided then it will return the top n saddest countries for that year
+
+        :param n:
+        :param year:
+        :return:
+        """
+        if year is None:
+            return self.df.sort_values(by=['max_temp']).tail(n)
+        return_df = self.df.loc[self.df['year'] == year]
+        return return_df.sort_values(by=['max_temp']).tail(n)
+
+    def top_n_saddest_countries(self, n, year=None):
+        """
+        Returns the top n saddest (country with lowest happiness index) countries for all time (over the dataset)
+        If years parameter is provided then it will return the top n saddest countries for that year
+
+        :param n:
+        :param year:
+        :return:
+        """
+        if year is None:
+            return self.df.sort_values(by=['max_temp']).head(n)
+        return_df = self.df.loc[self.df['year'] == year]
+        return return_df.sort_values(by=['max_temp']).head(n)
+
+
 
 def main():
     parser = argparse.ArgumentParser(description="Happiness arguments")

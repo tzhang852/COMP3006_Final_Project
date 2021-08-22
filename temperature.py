@@ -65,3 +65,31 @@ class Temperature:
                             animation_frame="year")
         fig.update(layout_coloraxis_showscale=True)
         fig.show()
+
+    def top_n_hottest_countries(self, n, year=None):
+        """
+        Returns the top n hottest (country with highest average max temperature) countries for all time (over the dataset)
+        If years parameter is provided then it will return the top n hottest countries for that year
+
+        :param n: default value of 1
+        :param year:
+        :return:
+        """
+        if year is None:
+            return self.df.sort_values(by=['max_temp']).tail(n)
+        return_df = self.df.loc[self.df['year'] == year]
+        return return_df.sort_values(by=['max_temp']).tail(n)
+
+    def top_n_coldest_countries(self, n, year=None):
+        """
+        Returns the top n coldest (country with lowest average max temperature) countries for all time (over the dataset)
+        If years parameter is provided then it will return the top n coldest countries for that year
+
+        :param n:
+        :param year:
+        :return:
+        """
+        if year is None:
+            return self.df.sort_values(by=['max_temp']).head(n)
+        return_df = self.df.loc[self.df['year'] == year]
+        return return_df.sort_values(by=['max_temp']).head(n)
