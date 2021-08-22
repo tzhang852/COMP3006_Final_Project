@@ -40,18 +40,38 @@ class Analysis:
                              color="max_temp", hover_name='country', size="happiness", size_max=30,
                              animation_frame='year', projection="natural earth")
         fig.show()
+        
+    def scatter(self):
+        """
+        Comments go here
+        """
+        x_1 = self.temp_df["country"]
+        y_1 = self.temp_df["max_temp"]
+        x_2 = self.happy_df["country"]
+        y_2 = self.happy_df["happiness"]
+        plt.scatter(x_1, y_1, marker='^')
+        plt.scatter(x_2, y_2, marker='o')
+        plt.show()
+
 
 def main():
     parser = argparse.ArgumentParser(description="Analysis")
     parser.add_argument('-p', '--plot', choices=['maxtemp'], help="Display bubble map by country" +
                                                                   " using mean maximum temperature and happiness")
+    parser.add_argument('-t', '--temperature', choices=['maxtemp','mintemp'], help="Display bubble map by country" +
+                                                                  " using mean maximum temperature and happiness")
+    #parser.add_argument('-h', '--happines', choices=['maxhappiness','minsadness'], help="Display bubble map by country" +
+                                                                  #" using mean maximum temperature and happiness")
+    #parser.add_argument('-p', '--plot', choices=['maxtemp'], help="Display bubble map by country" +
+                                                                  #" using mean maximum temperature and happiness")
+    
     # parser.add_argument('-')
     args = parser.parse_args()
 
     perusal = Analysis()
     print(args)
     if args.plot == 'maxtemp':
-        perusal.mean_max_temp()
+        perusal.scatter()
 
 
 if __name__ == "__main__":
