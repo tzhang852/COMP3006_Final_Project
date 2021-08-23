@@ -43,7 +43,6 @@ def main():
     temp = temperature.Temperature()
     temp_df = temperature.Temperature().df
     perusal = analysis.Analysis()
-    # perusal_df = analysis.Analysis().df
 
     # Initial Data exploration arguments for happiness
     if args.happyplt == 'heatmap':
@@ -62,7 +61,6 @@ def main():
         happy_df.to_csv("happiness.csv", index=False)
     if args.csv == 'temperature':
         temp_df.to_csv("temperature.csv", index=False)
-    # if args.csv == 'analysis':
 
     # Analysis displaying possible happiness and temperature correlation
     if args.analysis == 'bubble':

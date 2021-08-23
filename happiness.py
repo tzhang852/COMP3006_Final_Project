@@ -108,3 +108,4 @@ class Happiness:
             return self.df.sort_values(by=['happiness']).head(n)[['year', 'country', 'happiness']]
         return_df = self.df.loc[self.df['year'] == int(year)]
         return return_df.sort_values(by=['happiness']).head(n)[['year', 'country', 'happiness']]
+
