@@ -15,26 +15,17 @@ import analysis
 
 def main():
     parser = argparse.ArgumentParser(description="Happiness, Temperature, and Analysis arguments")
-    parser.add_argument('-a', '--happyplt', choices=['heatmap', 'bar'], help="Initial data exploration " +
-                                                                             "for happiness data")
-    parser.add_argument('-b', '--tempplt', choices=['heatmap', 'bubblemap'], help="Initial data exploration" +
-                                                                             "for temperature data")
-    parser.add_argument('-c', '--csv', choices=['happy', 'temp', 'analysis'], help="Download csv of" +
-                                                                                   "happiness, temperature, or analysis")
-    parser.add_argument('-d', '--analysis', choices=['bubble', 'min'], help="Displays a bubble graph of" +
-                                                                            "all countries based on temperature" +
-                                                                            "and happiness")
+    parser.add_argument('-a', '--happyplt', choices=['heatmap', 'bar'], help="Initial data exploration for happiness data")
+    parser.add_argument('-b', '--tempplt', choices=['heatmap', 'bubblemap'], help="Initial data exploration for temperature data")
+    parser.add_argument('-c', '--csv', choices=['happy', 'temp', 'analysis'], help="Download csv of happiness, temperature, or analysis")
+    parser.add_argument('-d', '--analysis', choices=['bubble', 'min'], help="Displays a bubble graph of all countries based on temperature and happiness")
     parser.add_argument('-mh', '--mosthot', type=int, dest='nhottest', help="show the n most hot countries in asc.")
-    parser.add_argument('-lh', '--leasthot', type=int, dest='nleasthot',
-                        help="show the n most least hot countries in asc.")
-    parser.add_argument('-mp', '--mosthappy', type=int, dest='nhappiest',
-                        help="show the n most happy countries in asc.")
-    parser.add_argument('-lp', '--leasthappy', type=int, dest='nleasthappy',
-                        help="show the n most least happy countries in asc.")
+    parser.add_argument('-lh', '--leasthot', type=int, dest='nleasthot',help="show the n most least hot countries in asc.")
+    parser.add_argument('-mp', '--mosthappy', type=int, dest='nhappiest', help="show the n most happy countries in asc.")
+    parser.add_argument('-lp', '--leasthappy', type=int, dest='nleasthappy',help="show the n most least happy countries in asc.")
     parser.add_argument('-y', '--year',
                         choices=['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018',
-                                 '2019', '2020'],
-                        help="value to let user pick year for mh, lh, mp, lp commands")
+                                 '2019', '2020'],help="value to let user pick year for mh, lh, mp, lp commands")
 
     args = parser.parse_args()
 

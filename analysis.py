@@ -27,6 +27,7 @@ class Analysis:
         # normalize
         temp_happy_df['happiness'] = temp_happy_df['happiness'] / max(temp_happy_df['happiness'])
         # temp_happy_df.to_csv("testing3.csv")
+        temp_happy_df.reset_index().to_csv("data_files/temperature_happy_cleaned.csv")
         return temp_happy_df
 
     def mean_max_temp(self):

@@ -49,6 +49,7 @@ class Happiness:
         df_happiness = df_happiness[df_happiness['year'] >= 2008]
         print(df_happiness.columns)
         df_happiness = df_happiness.groupby(['year', 'country']).mean().reset_index()
+        df_happiness.reset_index().to_csv("data_files/happiness_cleaned.csv")
         return df_happiness.reset_index()
 
     def happiness_map(self):
