@@ -49,7 +49,7 @@ class Temperature:
         df_temp = df_temp.groupby(['year', 'country']).mean().reset_index()
         return df_temp.reset_index()
 
-    def temp_map(self):
+    def temp_heat_map(self):
         """
         Displays an interactive map of all countries
         User can select year to see heat map for countries in selected year
@@ -63,6 +63,25 @@ class Temperature:
                             color_continuous_scale="blues",
                             title='Max Temperature by countries from 2008 to 2020',
                             animation_frame="year")
+        fig.update(layout_coloraxis_showscale=True)
+        fig.show()
+
+    def temp_bubble_map(self):
+        """
+        Displays an interactive map of all countries
+        User can select year to see heat map for countries in selected year
+        """
+        # setting 0s to 1s since negative size does not work and 1 is sufficintly small for visulization
+        self.df['max_temp'].values[self.df['max_temp'] < 0] = 1
+        fig = px.scatter_geo(self.df,
+                             locations="country",
+                             locationmode='country names',
+                             color="max_temp",
+                             hover_name="country",
+                             color_continuous_scale="blues",
+                             size=self.df.max_temp,
+                             title='Max Temperature by countries from 2008 to 2020',
+                             animation_frame="year")
         fig.update(layout_coloraxis_showscale=True)
         fig.show()
 
@@ -93,3 +112,6 @@ class Temperature:
             return self.df.sort_values(by=['max_temp']).head(n)[['year', 'country', 'max_temp']]
         return_df = self.df.loc[self.df['year'] == int(year)]
         return return_df.sort_values(by=['max_temp']).head(n)[['year', 'country', 'max_temp']]
+
+
+Temperature().temp_bubble_map()

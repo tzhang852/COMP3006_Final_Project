@@ -17,7 +17,7 @@ def main():
     parser = argparse.ArgumentParser(description="Happiness, Temperature, and Analysis arguments")
     parser.add_argument('-a', '--happyplt', choices=['heatmap', 'bar'], help="Initial data exploration " +
                                                                              "for happiness data")
-    parser.add_argument('-b', '--tempplt', choices=['heatmap', 'blah'], help="Initial data exploration" +
+    parser.add_argument('-b', '--tempplt', choices=['heatmap', 'bubblemap'], help="Initial data exploration" +
                                                                              "for temperature data")
     parser.add_argument('-c', '--csv', choices=['happy', 'temp', 'analysis'], help="Download csv of" +
                                                                                    "happiness, temperature, or analysis")
@@ -53,9 +53,9 @@ def main():
 
     # Initial Data exploration arguments for temperature
     if args.tempplt == 'heatmap':
-        temp.temp_map()
-    elif args.tempplt == 'blah':
-        print("show second graph here")
+        temp.temp_heat_map()
+    elif args.tempplt == 'bubblemap':
+        temp.temp_bubble_map()
 
     # Download csv of happiness, temperature, and analysis data
     if args.csv == 'happy':
