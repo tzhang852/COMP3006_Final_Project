@@ -44,7 +44,6 @@ def main():
     temp_df = temperature.Temperature().df
     perusal = analysis.Analysis()
     # perusal_df = analysis.Analysis().df
-    print(args)
 
     # Initial Data exploration arguments for happiness
     if args.happyplt == 'heatmap':
@@ -77,3 +76,7 @@ def main():
         print(happy.top_n_happiest_countries(args.nhappiest, args.year))
     if args.nleasthappy and args.nleasthappy > 0:
         print(happy.top_n_saddest_countries(args.nleasthappy, args.year))
+
+
+if __name__ == "__main__":
+    main()
