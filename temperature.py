@@ -112,6 +112,3 @@ class Temperature:
             return self.df.sort_values(by=['max_temp']).head(n)[['year', 'country', 'max_temp']]
         return_df = self.df.loc[self.df['year'] == int(year)]
         return return_df.sort_values(by=['max_temp']).head(n)[['year', 'country', 'max_temp']]
-
-
-Temperature().temp_bubble_map()
