@@ -120,25 +120,3 @@ class Happiness:
             return self.df.sort_values(by=['happiness']).head(n)[['year', 'country', 'happiness']]
         return_df = self.df.loc[self.df['year'] == int(year)]
         return return_df.sort_values(by=['happiness']).head(n)[['year', 'country', 'happiness']]
-
-
-def main():
-    # parser = argparse.ArgumentParser(description="Happiness arguments")
-    # parser.add_argument('-p', '--plot', choices=['heatmap', 'bar'], help="Display happiness by country" +
-    #                                                                      " using a heatmap or bar graph")
-    # # parser.add_argument('-')
-    # args = parser.parse_args()
-
-    # happiness = Happiness()
-    # print(args)
-    # if args.plot == 'heatmap':
-    #     happiness.happiness_map()
-    # elif args.plot == 'bar':
-    #     happiness.happiness_bar()
-    some_variable = Happiness().df
-    # print(some_variable)
-    some_variable.to_csv("some_variable.csv", index=False)
-
-
-if __name__ == "__main__":
-    main()
