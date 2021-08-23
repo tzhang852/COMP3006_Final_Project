@@ -1,7 +1,16 @@
 import argparse
+import pandas as pd
+import AppConfig
+import plotly.express as px
+import numpy as np
+import seaborn as sns
+import matplotlib
+import matplotlib.pyplot as plt
+import boto3
+import argparse
 import happiness
-import analysis
 import temperature
+import analysis
 
 
 def main():
@@ -25,7 +34,7 @@ def main():
     parser.add_argument('-y', '--year',
                         choices=['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018',
                                  '2019', '2020'],
-                        help="value to let user piuck year for mh, lh, mp, lp commands")
+                        help="value to let user pick year for mh, lh, mp, lp commands")
 
     args = parser.parse_args()
 
