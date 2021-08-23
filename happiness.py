@@ -103,9 +103,9 @@ class Happiness:
         :return:
         """
         if year is None:
-            return self.df.sort_values(by=['happiness']).head(n)
-        return_df = self.df.loc[self.df['year'] == year]
-        return return_df.sort_values(by=['happiness']).head(n)
+            return self.df.sort_values(by=['happiness'], ascending=False).head(n)[['year', 'country', 'happiness']]
+        return_df = self.df.loc[self.df['year'] == int(year)]
+        return return_df.sort_values(by=['happiness'], ascending=False).head(n)[['year', 'country', 'happiness']]
 
     def top_n_saddest_countries(self, n, year=None):
         """
@@ -117,9 +117,10 @@ class Happiness:
         :return:
         """
         if year is None:
-            return self.df.sort_values(by=['happiness']).head(n)
-        return_df = self.df.loc[self.df['year'] == year]
-        return return_df.sort_values(by=['happiness']).head(n)
+            return self.df.sort_values(by=['happiness']).head(n)[['year', 'country', 'happiness']]
+        return_df = self.df.loc[self.df['year'] == int(year)]
+        return return_df.sort_values(by=['happiness']).head(n)[['year', 'country', 'happiness']]
+
 
 def main():
     # parser = argparse.ArgumentParser(description="Happiness arguments")
@@ -135,8 +136,8 @@ def main():
     # elif args.plot == 'bar':
     #     happiness.happiness_bar()
     some_variable = Happiness().df
-    #print(some_variable)
-    some_variable.to_csv("some_variable.csv", index = False)
+    # print(some_variable)
+    some_variable.to_csv("some_variable.csv", index=False)
 
 
 if __name__ == "__main__":

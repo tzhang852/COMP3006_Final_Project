@@ -76,9 +76,9 @@ class Temperature:
         :return:
         """
         if year is None:
-            return self.df.sort_values(by=['max_temp']).head(n)
-        return_df = self.df.loc[self.df['year'] == year]
-        return return_df.sort_values(by=['max_temp']).head(n)
+            return self.df.sort_values(by=['max_temp'], ascending=False).head(n)[['year', 'country', 'max_temp']]
+        return_df = self.df.loc[self.df['year'] == int(year)]
+        return return_df.sort_values(by=['max_temp'], ascending=False).tail(n)[['year', 'country', 'max_temp']]
 
     def top_n_coldest_countries(self, n, year=None):
         """
@@ -90,6 +90,6 @@ class Temperature:
         :return:
         """
         if year is None:
-            return self.df.sort_values(by=['max_temp']).head(n)
-        return_df = self.df.loc[self.df['year'] == year]
-        return return_df.sort_values(by=['max_temp']).head(n)
+            return self.df.sort_values(by=['max_temp']).head(n)[['year', 'country', 'max_temp']]
+        return_df = self.df.loc[self.df['year'] == int(year)]
+        return return_df.sort_values(by=['max_temp']).head(n)[['year', 'country', 'max_temp']]
