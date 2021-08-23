@@ -15,15 +15,25 @@
 - To run type: python3 main.py
 - List of command and a brief description
 ```
-- -a    --happyplt      Initial data exploration for happiness data
-- -b    --tempplt       Initial data exploration for temperature data
-- -c    --csv           Download csv of happiness, temperature, or analysis
-- -d    --analysis      Displays a bubble graph of all countries based on temperature and happiness
+commands    description    
+
+- -a    --happyplt      Initial data exploration for happiness data                                     
+choices: heatmap, bar 
+- -b    --tempplt       Initial data exploration for temperature data                                   
+choices: heatmap, bubblemap
+- -c    --csv           Download csv of happiness, temperature, or analysis                             
+choices: happy, temp, analysis
+- -d    --analysis      Displays a bubble graph of all countries based on temperature and happiness     
+choices: bubble, min
 - -mh   --mosthot       show the n most hot countries in asc.
 - -lh   --leasthot      show the n most least hot countries in asc.
 - -mp   --mosthappy     show the n most happy countries in asc.
 - -lp   --leasthappy    show the n most least happy countries in asc.
-- -y    --year          value to let user pick year for mh, lh, mp, lp commands
+- -y    --year          value to let user pick year for mh, lh, mp, lp commands                         
+choices: any year between 2008 and 2020
+
+Example:
+python3 main.py -a heatmap -c analysis -mh 5 -y 2008
 ```
 
 **Conclusion**
