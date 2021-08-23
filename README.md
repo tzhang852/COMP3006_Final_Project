@@ -15,7 +15,7 @@
 - To run type: python3 main.py
 - List of command and a brief description
 ```
-- -a    --happyplt      Initial data exploration for happiness data 
+- -a    --happyplt      Initial data exploration for happiness data
 - -b    --tempplt       Initial data exploration for temperature data
 - -c    --csv           Download csv of happiness, temperature, or analysis
 - -d    --analysis      Displays a bubble graph of all countries based on temperature and happiness
