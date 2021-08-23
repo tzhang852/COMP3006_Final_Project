@@ -76,9 +76,9 @@ class Temperature:
         :return:
         """
         if year is None:
-            return self.df.sort_values(by=['max_temp']).tail(n)
+            return self.df.sort_values(by=['max_temp']).head(n)
         return_df = self.df.loc[self.df['year'] == year]
-        return return_df.sort_values(by=['max_temp']).tail(n)
+        return return_df.sort_values(by=['max_temp']).head(n)
 
     def top_n_coldest_countries(self, n, year=None):
         """

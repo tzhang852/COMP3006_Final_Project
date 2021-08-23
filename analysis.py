@@ -45,23 +45,22 @@ class Analysis:
         """
         Comments go here
         """
-        x_1 = self.temp_df["country"]
-        y_1 = self.temp_df["max_temp"]
-        x_2 = self.happy_df["country"]
-        y_2 = self.happy_df["happiness"]
-        plt.scatter(x_1, y_1, marker='^')
-        plt.scatter(x_2, y_2, marker='o')
+        x_1 = self.temp_happy_df["max_temp"]
+        y_2 = self.temp_happy_df["happiness"]
+        m, b = np.polyfit(x_1, y_2, 1)
+        plt.scatter(x_1, y_2, marker='o')
+        plt.plot(x_1, m*x_1 + b, color='red')
+        plt.savefig("maxtemp.png")
         plt.show()
-
 
 def main():
     parser = argparse.ArgumentParser(description="Analysis")
     parser.add_argument('-p', '--plot', choices=['maxtemp'], help="Display bubble map by country" +
                                                                   " using mean maximum temperature and happiness")
-    parser.add_argument('-t', '--temperature', choices=['maxtemp','mintemp'], help="Display bubble map by country" +
-                                                                  " using mean maximum temperature and happiness")
-    #parser.add_argument('-h', '--happines', choices=['maxhappiness','minsadness'], help="Display bubble map by country" +
-                                                                  #" using mean maximum temperature and happiness")
+    # parser.add_argument('-t', '--temperature', choices=range(2008,2020), help="Display bubble map by country" +
+    #                                                               " using mean maximum temperature and happiness")
+    # parser.add_argument('-a', '--happiness', choices=['maxhappiness','minsadness'], help="Display bubble map by country"+
+    #                                                                " using mean maximum temperature and happiness")
     #parser.add_argument('-p', '--plot', choices=['maxtemp'], help="Display bubble map by country" +
                                                                   #" using mean maximum temperature and happiness")
     
