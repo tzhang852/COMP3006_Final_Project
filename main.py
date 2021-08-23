@@ -18,12 +18,10 @@ def main():
     parser.add_argument('-mh', '--mosthot', type=int, dest='nhottest', help="show the n most hot countries in asc.")
     parser.add_argument('-lh', '--leasthot', type=int, dest='nleasthot',
                         help="show the n most least hot countries in asc.")
-
     parser.add_argument('-mp', '--mosthappy', type=int, dest='nhappiest',
                         help="show the n most happy countries in asc.")
     parser.add_argument('-lp', '--leasthappy', type=int, dest='nleasthappy',
                         help="show the n most least happy countries in asc.")
-
     parser.add_argument('-y', '--year',
                         choices=['2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018',
                                  '2019', '2020'],

@@ -81,15 +81,6 @@ class Happiness:
         plt.xticks(rotation=90)
         plt.show()
 
-    # def happiness_line(self):
-    #     """
-    #     Displays a line graph for each country with relative parameters that influence happiness
-    #     """
-    #     current_year = self.df[self.df['year'] == 2020][:166]
-    #     #df.loc[df['happiness'] < 100, 'country'] = 'Other countries' # Represent only large countries
-    #     fig = px.pie(current_year, values='happiness', names='country', title='Happiness by Country in 2020')
-    #     fig.show()
-
     def top_n_happiest_countries(self, n, year=None):
         """
         Returns the top n happiest (country with highest happiness index) countries for all time (over the dataset)

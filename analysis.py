@@ -26,7 +26,7 @@ class Analysis:
         temp_happy_df = (self.happy_df.merge(self.temp_df, on=['country', 'year'], how='inner'))
         # normalize
         temp_happy_df['happiness'] = temp_happy_df['happiness'] / max(temp_happy_df['happiness'])
-        #temp_happy_df.to_csv("testing3.csv")
+        # temp_happy_df.to_csv("testing3.csv")
         return temp_happy_df
 
     def mean_max_temp(self):
@@ -40,7 +40,7 @@ class Analysis:
                              color="max_temp", hover_name='country', size="happiness", size_max=30,
                              animation_frame='year', projection="natural earth")
         fig.show()
-        
+
     def scatter(self):
         """
         Comments go here
@@ -49,28 +49,13 @@ class Analysis:
         y_2 = self.temp_happy_df["happiness"]
         m, b = np.polyfit(x_1, y_2, 1)
         plt.scatter(x_1, y_2, marker='o')
-        plt.plot(x_1, m*x_1 + b, color='red')
+        plt.plot(x_1, m * x_1 + b, color='red')
         plt.savefig("maxtemp.png")
         plt.show()
 
-def main():
-    parser = argparse.ArgumentParser(description="Analysis")
-    parser.add_argument('-p', '--plot', choices=['maxtemp'], help="Display bubble map by country" +
-                                                                  " using mean maximum temperature and happiness")
-    # parser.add_argument('-t', '--temperature', choices=range(2008,2020), help="Display bubble map by country" +
-    #                                                               " using mean maximum temperature and happiness")
-    # parser.add_argument('-a', '--happiness', choices=['maxhappiness','minsadness'], help="Display bubble map by country"+
-    #                                                                " using mean maximum temperature and happiness")
-    #parser.add_argument('-p', '--plot', choices=['maxtemp'], help="Display bubble map by country" +
-                                                                  #" using mean maximum temperature and happiness")
-    
-    # parser.add_argument('-')
-    args = parser.parse_args()
 
-    perusal = Analysis()
-    print(args)
-    if args.plot == 'maxtemp':
-        perusal.scatter()
+def main():
+    pass
 
 
 if __name__ == "__main__":
